@@ -12,7 +12,7 @@
         <!-- We got a nav for a back ground -->
         <nav class="bg-gray-100">
             <!-- We got a div for a containment area -->
-            <div class="max-w-6xl mx-auto px-4">
+            <div class="max-w-7xl mx-auto px-4 py-4">
                 <!-- We are gonna have a div for flex and spaces -->
                 <div class="flex justify-between">
                     <!-- We are gonna have a left side part of the nav bar-->
@@ -26,18 +26,29 @@
                             </a>
                         </div>
                         <div class="flex items-center space-x-1">
-                            <a href="#" class="py-5 px-3 text-gray-600 hover:text-slate-900">Shop</a>
                             <a href="{% url 'About-Page' %}" class="py-5 px-3 text-gray-600 hover:text-slate-900">About</a>
                             <a href="{% url 'ContactUs-Page' %}" class="py-5 px-3 text-gray-600 hover:text-slate-900">Contact Us</a>
+                        </div>
+                        <div class="flex items-center space-x-1">
+                            <form action="GET">
+                                <div class="relative flex items-center text-gray-400 focus-within:text-gray-600">
+                                    <svg class="w-5 h-5 absolute ml-3 pointer-events-none" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+                                      </svg>
+                                    <input type="text" name="search" placeholder="Search for books" autocomplete="off" aria-label="Search for books" class="pr-3 pl-10 px-3 py-2 font-semibold placeholder-gray-500 text-black rounded-2xl border-none ring-2 ring-gray-300 focus:ring-gray-500 focus:ring-2" >
+                                </div>
+                            </form>
                         </div>
                     </div>
                     <!-- We are gonna have a right side part of the nav bar -->
                     <div class="flex items-center space-x-1">
                         <a href="#" class="py-5 px-5 text-slate-900 hover:text-gray-600">Login</a>
                         <a href="#" class="py-2 px-2 rounded bg-slate-900 text-white hover:bg-slate-700 transation duration-300 ">Register</a>
+                        <a href="#" class="py-2 px-4 rounded bg-slate-900 text-white hover:bg-slate-700 transation duration-300 ">Cart</a>
                     </div>
                 </div>
             </div>
+            
         </nav>
     </header>
 
