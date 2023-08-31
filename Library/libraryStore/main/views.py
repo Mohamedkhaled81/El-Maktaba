@@ -6,3 +6,6 @@ def home(request):
 
 def about(request):
     return render(request, 'main/about.html')
+
+def ContactUs(request):
+    return render(request, 'main/contact.html')

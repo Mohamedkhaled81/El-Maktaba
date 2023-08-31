@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>{% block title %}El-Maktaba{% endblock %}</title>
+</head>
+<body>
+    <header>
+        <!-- We got a nav for a back ground -->
+        <nav class="bg-gray-100">
+            <!-- We got a div for a containment area -->
+            <div class="max-w-6xl mx-auto px-4">
+                <!-- We are gonna have a div for flex and spaces -->
+                <div class="flex justify-between">
+                    <!-- We are gonna have a left side part of the nav bar-->
+                    <div class="flex space-x-4">
+                        <div>
+                            <a href="{% url 'Home-Page' %}" class="flex items-center py-5 px-2 text-gray-600 hover:text-slate-900">
+                                <svg class="h-6 w-6 mr-2 text-slate-900" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
+                                  </svg>
+                                  <span>El-Maktaba</span>
+                            </a>
+                        </div>
+                        <div class="flex items-center space-x-1">
+                            <a href="#" class="py-5 px-3 text-gray-600 hover:text-slate-900">Shop</a>
+                            <a href="{% url 'About-Page' %}" class="py-5 px-3 text-gray-600 hover:text-slate-900">About</a>
+                            <a href="{% url 'ContactUs-Page' %}" class="py-5 px-3 text-gray-600 hover:text-slate-900">Contact Us</a>
+                        </div>
+                    </div>
+                    <!-- We are gonna have a right side part of the nav bar -->
+                    <div class="flex items-center space-x-1">
+                        <a href="#" class="py-5 px-5 text-slate-900 hover:text-gray-600">Login</a>
+                        <a href="#" class="py-2 px-2 rounded bg-slate-900 text-white hover:bg-slate-700 transation duration-300 ">Register</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        
+    </footer>
+</body>
+</html>
