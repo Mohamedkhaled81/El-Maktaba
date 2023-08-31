@@ -6,6 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
     <title>{% block title %}El-Maktaba{% endblock %}</title>
+    <style>
+        html {
+            height: 100%;
+        }
+        body {
+            display: flex;
+            min-height: 100%;
+            flex-direction: column;
+        }
+        footer {
+            padding-top: 30px;
+            padding-bottom: 100px;
+            margin-top: auto;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -56,8 +71,20 @@
         {% block content %}{% endblock %}
     </main>
 
-    <footer>
-        
+    <footer class="bg-gray-100 text-gray-600">
+        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center">
+            <div class="text-center md:text-left mb-4 md:mb-0">
+                <p class="text-lg font-semibold">Explore, Imagine, Learn</p>
+                <p>Your Gateway to Knowledge and Adventures</p>
+            </div>
+            <div class="text-center md:text-left mb-4 md:mb-0">
+                <p class="text-lg font-semibold">Visit Our Library Store</p>
+                <p>Discover a World of Books and Literary Delights</p>
+            </div>
+            <div class="text-center">
+                <p>Copyright 2023 &copy; El-Maktaba, All rights reserved.</p>
+            </div>
+        </div>
     </footer>
 </body>
 </html>
