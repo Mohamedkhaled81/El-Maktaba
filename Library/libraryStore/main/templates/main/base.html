@@ -1,28 +1,40 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
     <title>{% block title %}El-Maktaba{% endblock %}</title>
-    <link rel="icon" href="data:image/svg+xml;charset=UTF-8,<svg xmlns='http://www.w3.org/2000/svg' fill='%23ffffff' viewBox='0 0 24 24'><path stroke-linecap='round' stroke-linejoin='round' d='M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25' /></svg>" type="image/svg+xml">
+    <link rel="icon"
+        href="data:image/svg+xml;charset=UTF-8,<svg xmlns='http://www.w3.org/2000/svg' fill='%23ffffff' viewBox='0 0 24 24'><path stroke-linecap='round' stroke-linejoin='round' d='M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25' /></svg>"
+        type="image/svg+xml">
     <style>
         html {
             height: 100%;
         }
+
         body {
             display: flex;
             min-height: 100%;
             flex-direction: column;
         }
+
         footer {
             padding-top: 30px;
             padding-bottom: 100px;
             margin-top: auto;
         }
+
+        .select-container {
+            display: inline-block;
+            margin-right: 5px;
+            /* Add some spacing between containers */
+        }
     </style>
 </head>
+
 <body>
     <header>
         <!-- We got a nav for a back ground -->
@@ -34,24 +46,34 @@
                     <!-- We are gonna have a left side part of the nav bar-->
                     <div class="flex space-x-4">
                         <div>
-                            <a href="{% url 'Home-Page' %}" class="flex items-center py-5 px-2 text-gray-600 hover:text-slate-900">
-                                <svg class="h-6 w-6 mr-2 text-slate-900" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
-                                  </svg>
-                                  <span>El-Maktaba</span>
+                            <a href="{% url 'Home-Page' %}"
+                                class="flex items-center py-5 px-2 text-gray-600 hover:text-slate-900">
+                                <svg class="h-6 w-6 mr-2 text-slate-900" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                    viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
+                                </svg>
+                                <span>El-Maktaba</span>
                             </a>
                         </div>
                         <div class="flex items-center space-x-1">
-                            <a href="{% url 'About-Page' %}" class="py-5 px-3 text-gray-600 hover:text-slate-900">About</a>
-                            <a href="{% url 'ContactUs-Page' %}" class="py-5 px-3 text-gray-600 hover:text-slate-900">Contact Us</a>
+                            <a href="{% url 'About-Page' %}"
+                                class="py-5 px-3 text-gray-600 hover:text-slate-900">About</a>
+                            <a href="{% url 'ContactUs-Page' %}"
+                                class="py-5 px-3 text-gray-600 hover:text-slate-900">Contact Us</a>
                         </div>
                         <div class="flex items-center space-x-1">
                             <form action="GET">
                                 <div class="relative flex items-center text-gray-400 focus-within:text-gray-600">
-                                    <svg class="w-5 h-5 absolute ml-3 pointer-events-none" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
-                                      </svg>
-                                    <input type="text" name="search" placeholder="Search for books" autocomplete="off" aria-label="Search for books" class="pr-3 pl-10 px-3 py-2 font-semibold placeholder-gray-500 text-black rounded-2xl border-none ring-2 ring-gray-300 focus:ring-gray-500 focus:ring-2" >
+                                    <svg class="w-5 h-5 absolute ml-3 pointer-events-none"
+                                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+                                    </svg>
+                                    <input type="text" name="search" placeholder="Search for books" autocomplete="off"
+                                        aria-label="Search for books"
+                                        class="pr-3 pl-10 px-3 py-2 font-semibold placeholder-gray-500 text-black rounded-2xl border-none ring-2 ring-gray-300 focus:ring-gray-500 focus:ring-2">
                                 </div>
                             </form>
                         </div>
@@ -59,14 +81,54 @@
                     <!-- We are gonna have a right side part of the nav bar -->
                     <div class="flex items-center space-x-1">
                         <a href="#" class="py-5 px-5 text-slate-900 hover:text-gray-600">Login</a>
-                        <a href="#" class="py-2 px-2 rounded bg-slate-900 text-white hover:bg-slate-700 transation duration-300 ">Register</a>
-                        <a href="#" class="py-2 px-4 rounded bg-slate-900 text-white hover:bg-slate-700 transation duration-300 ">Cart</a>
+                        <a href="#"
+                            class="py-2 px-2 rounded bg-slate-900 text-white hover:bg-slate-700 transation duration-300 ">Register</a>
+                        <a href="#"
+                            class="py-2 px-4 rounded bg-slate-900 text-white hover:bg-slate-700 transation duration-300 ">Cart</a>
                     </div>
                 </div>
             </div>
-            
+
         </nav>
+        <nav class="bg-slate-900 rounded">
+            <!-- We got a div for a containment area -->
+            <div class="max-w-7xl mx-auto px-2 py-2">
+                <!-- We are gonna have a div for flex and spaces -->
+                <div class="relative flex ">
+                    <!-- We are gonna have a left side part of the nav bar-->
+                    <div class="select-container">
+                        <select id="dropdown" name="dropdown"
+                            class="mt-1 block w-full px-4 py-2 bg-slate-900 text-white  focus:outline-none focus:ring focus:border-blue-300 sm:text-sm rounded-md">
+                            <option value="" disabled selected>Software Engineering</option>
+
+                            <option value="option1">Option 1</option>
+                            <option value="option2">Option 2</option>
+                            <option value="option3">Option 3</option>
+                        </select>
+                        <!-- Dropdown items can be added here -->
+                    </div>
+                    <div class="select-container">
+                        <select id="dropdown" name="dropdown"
+                            class="mt-1 block w-full px-4 py-2 bg-slate-900 text-white  focus:outline-none focus:ring focus:border-blue-300 sm:text-sm rounded-md">
+                            <option value="" disabled selected>Technology</option>
+
+                            <option value="option1">Option 1</option>
+                            <option value="option2">Option 2</option>
+                            <option value="option3">Option 3</option>
+                        </select>
+                        <!-- Dropdown items can be added here -->
+                    </div>
+
+
+
+                </div>
+            </div>
+
+        </nav>
+
     </header>
+
+
 
     <main>
         {% block content %}{% endblock %}
@@ -88,4 +150,5 @@
         </div>
     </footer>
 </body>
+
 </html>
