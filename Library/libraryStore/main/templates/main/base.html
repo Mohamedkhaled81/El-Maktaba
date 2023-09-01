@@ -40,7 +40,7 @@
         <!-- We got a nav for a back ground -->
         <nav class="bg-gray-100">
             <!-- We got a div for a containment area -->
-            <div class="max-w-7xl mx-auto px-4 py-4">
+            <div class="max-w-7xl mx-auto px-4 py-3">
                 <!-- We are gonna have a div for flex and spaces -->
                 <div class="flex justify-between">
                     <!-- We are gonna have a left side part of the nav bar-->
@@ -80,32 +80,32 @@
                     </div>
                     <!-- We are gonna have a right side part of the nav bar -->
                     <div class="flex items-center space-x-1">
-                        <a href="#" class="py-5 px-5 text-slate-900 hover:text-gray-600">Login</a>
-                        <a href="#"
+                        {% if not user.is_authenticated %}
+                        <a href="{% url 'Login'  %}" class="py-5 px-5 text-slate-900 hover:text-gray-600">Login</a>
+                        <a href="{% url 'Register' %}"
                             class="py-2 px-2 rounded bg-slate-900 text-white hover:bg-slate-700 transation duration-300 ">Register</a>
+                        {% else %}
+                        <a href="{% url 'Logout'  %}"
+                            class="py-2 px-4 rounded bg-slate-900 text-white hover:bg-slate-700 transation duration-300 ">Logout</a>
+                        {% endif %}
                         <a href="#"
                             class="py-2 px-4 rounded bg-slate-900 text-white hover:bg-slate-700 transation duration-300 ">Cart</a>
                     </div>
                 </div>
             </div>
-
         </nav>
         <nav class="bg-slate-900 rounded">
-            <!-- We got a div for a containment area -->
             <div class="max-w-7xl mx-auto px-2 py-2">
-                <!-- We are gonna have a div for flex and spaces -->
                 <div class="relative flex ">
-                    <!-- We are gonna have a left side part of the nav bar-->
+
                     <div class="select-container">
                         <select id="dropdown" name="dropdown"
                             class="mt-1 block w-full px-4 py-2 bg-slate-900 text-white  focus:outline-none focus:ring focus:border-blue-300 sm:text-sm rounded-md">
                             <option value="" disabled selected>Software Engineering</option>
-
                             <option value="option1">Option 1</option>
                             <option value="option2">Option 2</option>
                             <option value="option3">Option 3</option>
                         </select>
-                        <!-- Dropdown items can be added here -->
                     </div>
                     <div class="select-container">
                         <select id="dropdown" name="dropdown"
@@ -116,25 +116,25 @@
                             <option value="option2">Option 2</option>
                             <option value="option3">Option 3</option>
                         </select>
-                        <!-- Dropdown items can be added here -->
                     </div>
-
-
-
                 </div>
             </div>
-
         </nav>
-
     </header>
-
-
-
     <main>
-        {% block content %}{% endblock %}
-    </main>
+        {% block content %}
 
-    <footer class="bg-gray-100 text-gray-600">
+
+
+
+
+
+
+
+
+        {% endblock %}
+    </main>
+    <footer class="bg-gray-200 text-gray-600">
         <div class="container mx-auto flex flex-col md:flex-row justify-between items-center">
             <div class="text-center md:text-left mb-4 md:mb-0">
                 <p class="text-lg font-semibold">Explore, Imagine, Learn</p>
