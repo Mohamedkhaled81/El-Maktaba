@@ -10,6 +10,7 @@ def show_all(request, cat):
 
 def show_sub(request, cat, sub):
     books = Books.objects.filter(Q(sub_category__category__slug=cat) &  Q(sub_category__slug=sub))
-    print(books)
+    # books = Books.objects.select_related('sub_category').filter(sub_category__slug=sub)     
+    # books = Books.objects.filter(sub_category__slug=sub)                                             
     context = {"books" : books}
     return render(request, 'book/books.html', context)
