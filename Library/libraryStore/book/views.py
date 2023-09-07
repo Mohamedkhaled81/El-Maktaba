@@ -1,14 +1,15 @@
 from django.shortcuts import render
-from .models import Books
+from django.db.models import Q
 
-def showAllSubBooks(request, cat):
-    books = Books.objects.filter(sub_category__category__title=cat)
-    print(books)
-    print(Books.objects.all())
+from .models import *
+
+def show_all(request, cat):
+    books = Books.objects.filter(sub_category__category__slug=cat)
     context = {"books" : books}
     return render(request, 'book/books.html', context)
 
-def showSpecificSubBooks(request, sub):
-    books = Books.objects.select_related(sub_category=sub)
+def show_sub(request, cat, sub):
+    books = Books.objects.filter(Q(sub_category__category__slug=cat) &  Q(sub_category__slug=sub))
+    print(books)
     context = {"books" : books}
     return render(request, 'book/books.html', context)
