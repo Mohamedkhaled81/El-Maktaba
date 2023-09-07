@@ -31,7 +31,7 @@ class Books(BaseClass):
         db_table = 'Books'
 
 class SubCategory(BaseClass):
-    category = models.ForeignKey('Category',on_delete=models.CASCADE)
+    category = models.ForeignKey('Category',on_delete=models.CASCADE,related_name='subset')
 
     class Meta:
         db_table = 'SubCategory'

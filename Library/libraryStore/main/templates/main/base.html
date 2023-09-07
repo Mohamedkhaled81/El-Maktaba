@@ -33,31 +33,37 @@
             margin: 2px;
             margin-left: 16px;
         }
+
         .dropdown * {
             box-sizing: border-box;
         }
+
         .select {
             background-color: #0f172a;
             color: #fff;
             display: flex;
             justify-content: space-between;
-            align-items:center;
+            align-items: center;
             border: 2px #0f172a solid;
             border-radius: 0.5em;
             padding: 4px;
             cursor: pointer;
             transition: background 0.3s;
         }
+
         .select-clicked {
             border: 2px #26489a solid;
-            box-shadow: 0 0 0.8em #26489a;  
+            box-shadow: 0 0 0.8em #26489a;
         }
+
         .select:hover {
             background: #323741;
         }
+
         .selected {
             padding-right: 10px;
         }
+
         .caret {
             width: 0;
             height: 0;
@@ -66,15 +72,17 @@
             border-top: 6px solid #fff;
             transition: 0.3s;
         }
+
         .caret-rotate {
             transform: rotate(180deg);
         }
+
         .menu {
             margin-top: 6px;
             padding: 0.2em 0.5em;
             background: #323741;
             border: 1px #363a43 solid;
-            box-shadow: 0 0.5em 1em rgba(0,0,0,0.2);
+            box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.2);
             border-radius: 0.5em;
             color: #9fa5b5;
             position: absolute;
@@ -87,25 +95,29 @@
             transition: 0.2s;
             z-index: 1;
         }
+
         .menu li {
             padding: 0.7em 0.5em;
             margin: 0.3em 0;
             border-radius: 0.5em;
             cursor: pointer;
         }
+
         .menu li:hover {
             background: #2a2d35;
         }
+
         .active {
             background: #23242a;
 
         }
+
         .menu-open {
             display: block;
             opacity: 1;
         }
     </style>
-    
+
 </head>
 
 <body>
@@ -137,7 +149,7 @@
                                 class="py-5 px-3 text-gray-600 hover:text-slate-900">Contact Us</a>
                         </div>
                         <div class="flex items-center space-x-1">
-                            <form action="#" method="get" >
+                            <form action="#" method="get">
                                 <div class="relative flex items-center text-gray-400 focus-within:text-gray-600">
                                     <svg class="w-5 h-5 absolute ml-3 pointer-events-none"
                                         xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -171,74 +183,26 @@
         <nav class="bg-slate-900 ">
             <div class="max-w-7xl mx-auto px-2 py-2">
                 <div class="relative flex">
+                    {% for category in categories %}
                     <div class="dropdown">
                         <div class="select">
-                            <span class="selected">Software Engineering</span>
+                            <span class="selected">{{category.title}}</span>
                             <div class="caret"></div>
                         </div>
                         <ul class="menu">
-                            <a href="{% url 'Cat-Page' 'software-engineering'%}"><li>All</li></a>
-                            <a href="{% url 'sub&Cat-Page' 'software-engineering' 'dsa'%}"><li>DSA</li></a>
-                            <a href="{% url 'sub&Cat-Page' 'software-engineering' 'clean-code'%}"><li>Clean Code</li></a>
-                            <a href="{% url 'sub&Cat-Page' 'software-engineering' 'oop'%}"><li>OOP</li></a>
+
+                            <a href="{% url 'Cat-Page' category.slug %}">
+                                <li>All</li>
+                            </a>
+                            {% for subcat in category.subset.all %}
+                            <a href="{% url 'sub&Cat-Page' category.slug subcat.slug %}">
+                                <li>{{subcat.title}}</li>
+                            </a>
+                            {% endfor %}
+
                         </ul>
                     </div>
-                    <div class="dropdown">
-                        <div class="select">
-                            <span class="selected">Technology</span>
-                            <div class="caret"></div>
-                        </div>
-                        <ul class="menu">
-                            <a href="#"><li>All</li></a>
-                            <a href="#"><li>Django</li></a>
-                            <a href="#"><li>.Net</li></a>
-                            <a href="#"><li>HTML & CSS</li></a> 
-                        </ul>
-                    </div>
-                    <div class="dropdown">
-                        <div class="select">
-                            <span class="selected">AI & Data Science</span>
-                            <div class="caret"></div>
-                        </div>
-                        <ul class="menu">
-                            <a href="#"><li>All</li></a>
-                            <a><li>Math</li></a>
-                            <a><li>ML</li></a>
-                        </ul>
-                    </div>
-                    <div class="dropdown">
-                        <div class="select">
-                            <span class="selected">DevOps & Cloud</span>
-                            <div class="caret"></div>
-                        </div>
-                        <ul class="menu">
-                            <a href="#"><li>All</li></a>
-                            <a><li>DevOps</li></a>
-                            <a><li>Docker</li></a>
-                        </ul>
-                    </div>
-                    <div class="dropdown">
-                        <div class="select">
-                            <span class="selected">Security & Hardware</span>
-                            <div class="caret"></div>
-                        </div>
-                        <ul class="menu">
-                            <a href="#"><li>All</li></a>
-                            <a><li>Embedded Systems</li></a>
-                            <a><li>Computer Arch</li></a>
-                        </ul>
-                    </div>
-                    <div class="dropdown">
-                        <div class="select">
-                            <span class="selected">Creativity</span>
-                            <div class="caret"></div>
-                        </div>
-                        <ul class="menu">
-                            <a href="#"><li>All</li></a>
-                            <a><li>UX Design</li></a>
-                            <a><li>PS</li></a>
-                        </ul>
-                    </div>
+                    {% endfor %}
                 </div>
             </div>
         </nav>
@@ -246,7 +210,7 @@
     <main>
         {% block content %}
 
-        {% endblock %}    
+        {% endblock %}
     </main>
     <footer class="bg-gray-200 text-gray-600">
         <div class="container mx-auto flex flex-col md:flex-row justify-between items-center">
@@ -264,6 +228,11 @@
         </div>
     </footer>
 </body>
+
+
+
+
+
 <script>
     const dropdowns = document.querySelectorAll('.dropdown');
     let activeDropdown = null; // Keep track of the active dropdown
@@ -283,7 +252,7 @@
                     activeDropdown.querySelector('.caret').classList.remove('caret-rotate');
                     activeDropdown.querySelector('.select').classList.remove('select-clicked');
                 }
-                
+
                 // Set the current dropdown as active
                 activeDropdown = dropdown;
             }

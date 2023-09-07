@@ -3,14 +3,18 @@ from django.db.models import Q
 
 from .models import *
 
-def show_all(request, cat):
-    books = Books.objects.filter(sub_category__category__slug=cat)
+def show_all_books(request, cat):
+    books = Books.objects.all()
     context = {"books" : books}
     return render(request, 'book/books.html', context)
 
-def show_sub(request, cat, sub):
-    books = Books.objects.filter(Q(sub_category__category__slug=cat) &  Q(sub_category__slug=sub))
+# for showing the related books for each sub category
+def show_related_books(request, cat, sub):
+    print(request.path)
+    #books = Books.objects.filter(Q(sub_category__category__slug=cat) &  Q(sub_category__slug=sub))
     # books = Books.objects.select_related('sub_category').filter(sub_category__slug=sub)     
-    # books = Books.objects.filter(sub_category__slug=sub)                                             
+    books = Books.objects.filter(sub_category__slug=sub)         
+    print(books)                   
+    print('dasd')                 
     context = {"books" : books}
     return render(request, 'book/books.html', context)
