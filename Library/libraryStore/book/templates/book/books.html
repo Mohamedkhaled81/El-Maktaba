@@ -1,0 +1,11 @@
+{% extends "main/base.html" %}
+{% block title %}El-Maktaba | Books{% endblock %}
+{% block content %}
+<div class="py-32 text-center">
+    <ul>
+    {% for book in books %}
+        <li>{{book.title}}</li>
+    {% endfor %}
+    </ul>
+</div>
+{% endblock content %}
