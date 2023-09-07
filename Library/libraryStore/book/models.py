@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.text import slugify
+from django.utils import timezone
 
 
 class BaseClass(models.Model):
@@ -8,10 +9,9 @@ class BaseClass(models.Model):
     class Meta:
         abstract = True
     
-
-    def save(self,*arges,**kwargs):
+    def save(self,*args,**kwargs):
         self.slug = slugify(self.title)
-        super().save(*arges,**kwargs)
+        super().save(*args,**kwargs)
 
     def __str__(self) -> str:
         return self.title
@@ -25,7 +25,7 @@ class Books(BaseClass):
     quantity = models.SmallIntegerField()
     selled_quantity = models.SmallIntegerField()
     description = models.TextField()
-
+    created_at = models.DateTimeField("Date", default=timezone.now)
 
     class Meta:
         db_table = 'Books'
@@ -37,7 +37,7 @@ class SubCategory(BaseClass):
         db_table = 'SubCategory'
 
 class Category(BaseClass):
-
+    
     class Meta:
         db_table = 'Category'
 

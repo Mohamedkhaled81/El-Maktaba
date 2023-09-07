@@ -27,15 +27,89 @@
             margin-top: auto;
         }
 
-        .select-container {
-            display: inline-block;
-            margin-right: 5px;
-            /* Add some spacing between containers */
+        .dropdown {
+            min-width: 10em;
+            position: relative;
+            margin: 2px;
+            margin-left: 16px;
+        }
+        .dropdown * {
+            box-sizing: border-box;
+        }
+        .select {
+            background-color: #0f172a;
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items:center;
+            border: 2px #0f172a solid;
+            border-radius: 0.5em;
+            padding: 4px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .select-clicked {
+            border: 2px #26489a solid;
+            box-shadow: 0 0 0.8em #26489a;  
+        }
+        .select:hover {
+            background: #323741;
+        }
+        .selected {
+            padding-right: 10px;
+        }
+        .caret {
+            width: 0;
+            height: 0;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-top: 6px solid #fff;
+            transition: 0.3s;
+        }
+        .caret-rotate {
+            transform: rotate(180deg);
+        }
+        .menu {
+            margin-top: 6px;
+            padding: 0.2em 0.5em;
+            background: #323741;
+            border: 1px #363a43 solid;
+            box-shadow: 0 0.5em 1em rgba(0,0,0,0.2);
+            border-radius: 0.5em;
+            color: #9fa5b5;
+            position: absolute;
+            top: 3em;
+            left: 50%;
+            width: 100%;
+            transform: translateX(-50%);
+            opacity: 0;
+            display: none;
+            transition: 0.2s;
+            z-index: 1;
+        }
+        .menu li {
+            padding: 0.7em 0.5em;
+            margin: 0.3em 0;
+            border-radius: 0.5em;
+            cursor: pointer;
+        }
+        .menu li:hover {
+            background: #2a2d35;
+        }
+        .active {
+            background: #23242a;
+
+        }
+        .menu-open {
+            display: block;
+            opacity: 1;
         }
     </style>
+    
 </head>
 
 <body>
+
     <header>
         <!-- We got a nav for a back ground -->
         <nav class="bg-gray-200">
@@ -96,26 +170,68 @@
         </nav>
         <nav class="bg-slate-900 ">
             <div class="max-w-7xl mx-auto px-2 py-2">
-                <div class="relative flex ">
-
-                    <div class="select-container">
-                        <select id="dropdown" name="dropdown"
-                            class="mt-1 block w-full px-4 py-2 bg-slate-900 text-white  focus:outline-none focus:ring focus:border-blue-300 sm:text-sm rounded-md">
-                            <option value="" disabled selected>Software Engineering</option>
-                            <option value="option1">Option 1</option>
-                            <option value="option2">Option 2</option>
-                            <option value="option3">Option 3</option>
-                        </select>
+                <div class="relative flex">
+                    <div class="dropdown">
+                        <div class="select">
+                            <span class="selected">Software Engineering</span>
+                            <div class="caret"></div>
+                        </div>
+                        <ul class="menu">
+                            <a href="{% url 'About-Page' %}"><li>DSA</li></a>
+                            <a href="#"><li>Clean Code</li></a>
+                            <a href="#"><li>OOP</li></a>
+                        </ul>
                     </div>
-                    <div class="select-container">
-                        <select id="dropdown" name="dropdown"
-                            class="mt-1 block w-full px-4 py-2 bg-slate-900 text-white  focus:outline-none focus:ring focus:border-blue-300 sm:text-sm rounded-md">
-                            <option value="" disabled selected>Technology</option>
-
-                            <option value="option1">Option 1</option>
-                            <option value="option2">Option 2</option>
-                            <option value="option3">Option 3</option>
-                        </select>
+                    <div class="dropdown">
+                        <div class="select">
+                            <span class="selected">Technology</span>
+                            <div class="caret"></div>
+                        </div>
+                        <ul class="menu">
+                            <a href="#"><li>Django</li></a>
+                            <a href="#"><li>.Net</li></a>
+                            <a href="#"><li>HTML & CSS</li></a> 
+                        </ul>
+                    </div>
+                    <div class="dropdown">
+                        <div class="select">
+                            <span class="selected">AI & Data Science</span>
+                            <div class="caret"></div>
+                        </div>
+                        <ul class="menu">
+                            <a><li>Math</li></a>
+                            <a><li>ML</li></a>
+                        </ul>
+                    </div>
+                    <div class="dropdown">
+                        <div class="select">
+                            <span class="selected">DevOps & Cloud</span>
+                            <div class="caret"></div>
+                        </div>
+                        <ul class="menu">
+                            <a><li>DevOps</li></a>
+                            <a><li>Docker</li></a>
+                        </ul>
+                    </div>
+                    <div class="dropdown">
+                        <div class="select">
+                            <span class="selected">Security & Hardware</span>
+                            <div class="caret"></div>
+                        </div>
+                        <ul class="menu">
+                            <a><li>Embedded Systems</li></a>
+                            <a><li>Computer Arch</li></a>
+                        </ul>
+                    </div>
+                    <div class="dropdown">
+                        <div class="select">
+                            <span class="selected">Creativity</span>
+                            <div class="caret"></div>
+                        </div>
+                        <ul class="menu">
+                            <a><li>UX Design</li></a>
+                            <a><li>PS</li></a>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -124,15 +240,7 @@
     <main>
         {% block content %}
 
-
-
-
-
-
-
-
-
-        {% endblock %}
+        {% endblock %}    
     </main>
     <footer class="bg-gray-200 text-gray-600">
         <div class="container mx-auto flex flex-col md:flex-row justify-between items-center">
@@ -150,5 +258,47 @@
         </div>
     </footer>
 </body>
+<script>
+    const dropdowns = document.querySelectorAll('.dropdown');
+    let activeDropdown = null; // Keep track of the active dropdown
+
+    dropdowns.forEach(dropdown => {
+        const select = dropdown.querySelector('.select');
+        const caret = dropdown.querySelector('.caret');
+        const menu = dropdown.querySelector('.menu');
+        const options = dropdown.querySelectorAll('.menu li'); // Use querySelectorAll
+        const selected = dropdown.querySelector('.selected');
+
+        select.addEventListener('click', () => {
+            if (activeDropdown !== dropdown) {
+                // Close the previously active dropdown
+                if (activeDropdown) {
+                    activeDropdown.querySelector('.menu').classList.remove('menu-open');
+                    activeDropdown.querySelector('.caret').classList.remove('caret-rotate');
+                    activeDropdown.querySelector('.select').classList.remove('select-clicked');
+                }
+                
+                // Set the current dropdown as active
+                activeDropdown = dropdown;
+            }
+
+            select.classList.toggle('select-clicked');
+            caret.classList.toggle('caret-rotate');
+            menu.classList.toggle('menu-open');
+        });
+
+        options.forEach(option => {
+            option.addEventListener('click', () => {
+                selected.classList.remove('select-clicked');
+                caret.classList.remove('caret-rotate');
+                menu.classList.remove('menu-open');
+                options.forEach(option => {
+                    option.classList.remove('active');
+                });
+                option.classList.add('active');
+            });
+        });
+    });
+</script>
 
 </html>
