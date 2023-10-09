@@ -2,7 +2,10 @@
 {% block title %}El-Maktaba | Contact Us{% endblock %}
 {% block content %}
 <div class="py-32 text-center">
-    <h2 class="font-extrabold text-6xl">This is conatct Us Page :P</h2>
-    <p class="py-5">- A Form needed here gonna do it isa -</p>
+    <form method = 'post'>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type = "submit" value = "submit">
+    </form>
 </div> 
 {% endblock content %}
