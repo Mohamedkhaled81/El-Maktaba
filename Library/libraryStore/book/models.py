@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils.text import slugify
 from django.utils import timezone
+from PIL import Image
 
 
 class BaseClass(models.Model):
@@ -29,6 +30,14 @@ class Book(BaseClass):
 
     class Meta:
         db_table = 'Books'
+
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+        img = Image.open(self.image.path)
+        if img.width > 300 or img.height > 300:
+            resize = (300,300)
+            img.thumbnail(resize)
+            img.save(self.image.path) 
 
 class SubCategory(BaseClass):
     category = models.ForeignKey('Category',on_delete=models.CASCADE,related_name='subset')

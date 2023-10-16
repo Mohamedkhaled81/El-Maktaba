@@ -13,7 +13,7 @@ def order_paginate(queryset,request):
     order = request.GET.get('orderby')
     if order:
         queryset = queryset.order_by(order)  
-    paginator = Paginator(queryset,5) 
+    paginator = Paginator(queryset,8) 
     page_num = request.GET.get('page')
     queryset=paginator.get_page(page_num)
     return queryset
