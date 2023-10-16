@@ -1,17 +1,19 @@
 from django.shortcuts import render
-from django.db.models import Q
-
+from django.core.paginator import Paginator 
+from main.views import order_paginate
 from .models import *
 
-def show_all_books(request, cat):
-    books = Books.objects.all()
+def category_related_books(request, cat):
+    books = Books.objects.filter(sub_category__category__slug=cat)
+    books = order_paginate(books,request)
     context = {"books" : books}
     return render(request, 'book/books.html', context)
 
-# for showing the related books for each sub category
-def show_related_books(request, cat, sub):
-    #books = Books.objects.filter(Q(sub_category__category__slug=cat) &  Q(sub_category__slug=sub))
-    # books = Books.objects.select_related('sub_category').filter(sub_category__slug=sub)     
+def subcategory_related_books(request,cat,sub):   
     books = Books.objects.filter(sub_category__slug=sub)                        
+    books = order_paginate(books,request)
     context = {"books" : books}
     return render(request, 'book/books.html', context)
+
+  
+

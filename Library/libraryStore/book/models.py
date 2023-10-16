@@ -20,7 +20,7 @@ class BaseClass(models.Model):
 class Books(BaseClass):
     sub_category = models.ForeignKey('SubCategory',on_delete=models.CASCADE)
     number_of_pages = models.IntegerField()
-    image = models.ImageField(blank=True,default=None)
+    image = models.ImageField(blank=True,default=None,upload_to='images/')
     price = models.DecimalField(max_digits=6,decimal_places=2)
     quantity = models.SmallIntegerField()
     selled_quantity = models.SmallIntegerField()
