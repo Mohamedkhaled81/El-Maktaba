@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.core.paginator import Paginator 
 from book.models import Book
+from .forms import ContactUsForm
 # Create your views here.
 
 def home(request):
@@ -38,4 +39,10 @@ def about(request):
 def ContactUs(request):
     if 'search' in request.GET:
         return home(request)
-    return render(request, 'main/contact.html')
+    elif request.method == 'POST':
+        form = ContactUsForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('ContactUs-Page')
+    form = ContactUsForm()
+    return render(request, 'main/contact.html', {'form' : form})

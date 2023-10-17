@@ -1,8 +1,56 @@
-{% extends "main/base.html" %}
-{% block title %}El-Maktaba | Contact Us{% endblock %}
-{% block content %}
-<div class="py-32 text-center">
-    <h2 class="font-extrabold text-6xl">This is conatct Us Page :P</h2>
-    <p class="py-5">- A Form needed here gonna do it isa -</p>
-</div> 
+{% extends "main/base.html" %} {% block title %}El-Maktaba | Contact Us{% endblock %} {% block content %}
+<div class="max-w-7xl mx-auto px-4 py-3">
+<div class="flex items-center justify-center min-h-screen">
+  <div
+    class="relative flex flex-col m-6 space-y-8 bg-white shadow-2xl rounded-2xl md:flex-row md:space-y-0 p-10">
+    <div class="flex flex-col justify-center p-7 md:p-11">
+      <span class="mb-3 text-4xl text-slate-900 font-bold">Contact US</span>
+      <span class="font-light text-gray-400">
+        Please enter the required queries.
+      </span>
+      <form method="post" class="py-1">
+        {% csrf_token %}
+        <div class="py-2">
+          <label
+            for="{{ form.full_name.id_for_label }}"
+            class="block text-md font-semibold mb-2">Full Name</label>
+          <input
+            type="text"
+            name="{{ form.full_name.name }}"
+            id="{{ form.full_name.id_for_label }}"
+            class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-400"
+            placeholder="Enter your Full Name"/>
+        </div>
+        <div class="py-2">
+          <label
+            for="{{ form.email.id_for_label }}"
+            class="block text-md font-semibold mb-2">Email</label>
+          <input
+            type="email"
+            name="{{ form.email.name }}"
+            id="{{ form.email.id_for_label }}"
+            class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-400"
+            placeholder="Enter your Email"/>
+        </div>
+        <div class="py-2">
+            <label
+              for="{{ form.mssg.id_for_label }}"
+              class="block text-md font-semibold mb-2">Message</label>
+            <textarea
+              type="text"
+              name="{{ form.mssg.name }}"
+              id="{{ form.mssg.id_for_label }}"
+              class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-400"
+              placeholder="Enter your Message"
+              rows="4" cols="50"></textarea>
+          </div>
+        <button
+          type="submit"
+          class="w-full bg-slate-900 text-white p-2 rounded-lg  hover:bg-white hover:text-black hover:border hover:border-gray-300">
+          Submit
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
 {% endblock content %}
