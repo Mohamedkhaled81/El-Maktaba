@@ -10,32 +10,12 @@
     <link rel="icon"
         href="data:image/svg+xml;charset=UTF-8,<svg xmlns='http://www.w3.org/2000/svg' fill='%23ffffff' viewBox='0 0 24 24'><path stroke-linecap='round' stroke-linejoin='round' d='M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25' /></svg>"
         type="image/svg+xml">
-    <style>
-        html {
-            height: 100%;
-        }
+    <link rel="stylesheet" href="{% static 'main/css/main.css' %}" type="text/css">
 
-        body {
-            display: flex;
-            min-height: 100%;
-            flex-direction: column;
-        }
-
-        footer {
-            padding-top: 30px;
-            padding-bottom: 100px;
-            margin-top: auto;
-        }
-
-        .select-container {
-            display: inline-block;
-            margin-right: 5px;
-            /* Add some spacing between containers */
-        }
-    </style>
 </head>
 
 <body>
+
     <header>
         <!-- We got a nav for a back ground -->
         <nav class="bg-gray-200">
@@ -63,7 +43,7 @@
                                 class="py-5 px-3 text-gray-600 hover:text-slate-900">Contact Us</a>
                         </div>
                         <div class="flex items-center space-x-1">
-                            <form action="GET">
+                            <form method="get">
                                 <div class="relative flex items-center text-gray-400 focus-within:text-gray-600">
                                     <svg class="w-5 h-5 absolute ml-3 pointer-events-none"
                                         xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -96,41 +76,33 @@
         </nav>
         <nav class="bg-slate-900 ">
             <div class="max-w-7xl mx-auto px-2 py-2">
-                <div class="relative flex ">
+                <div class="relative flex">
+                    {% for category in categories %}
+                    <div class="dropdown">
+                        <div class="select">
+                            <span class="selected">{{category.title}}</span>
+                            <div class="caret"></div>
+                        </div>
+                        <ul class="menu">
 
-                    <div class="select-container">
-                        <select id="dropdown" name="dropdown"
-                            class="mt-1 block w-full px-4 py-2 bg-slate-900 text-white  focus:outline-none focus:ring focus:border-blue-300 sm:text-sm rounded-md">
-                            <option value="" disabled selected>Software Engineering</option>
-                            <option value="option1">Option 1</option>
-                            <option value="option2">Option 2</option>
-                            <option value="option3">Option 3</option>
-                        </select>
-                    </div>
-                    <div class="select-container">
-                        <select id="dropdown" name="dropdown"
-                            class="mt-1 block w-full px-4 py-2 bg-slate-900 text-white  focus:outline-none focus:ring focus:border-blue-300 sm:text-sm rounded-md">
-                            <option value="" disabled selected>Technology</option>
+                            <a href="{% url 'Cat-Page' category.slug %}">
+                                <li>All</li>
+                            </a>
+                            {% for subcat in category.subset.all %}
+                            <a href="{% url 'sub&Cat-Page' category.slug subcat.slug %}">
+                                <li>{{subcat.title}}</li>
+                            </a>
+                            {% endfor %}
 
-                            <option value="option1">Option 1</option>
-                            <option value="option2">Option 2</option>
-                            <option value="option3">Option 3</option>
-                        </select>
+                        </ul>
                     </div>
+                    {% endfor %}
                 </div>
             </div>
         </nav>
     </header>
     <main>
         {% block content %}
-
-
-
-
-
-
-
-
 
         {% endblock %}
     </main>
@@ -150,5 +122,52 @@
         </div>
     </footer>
 </body>
+
+
+
+
+
+<script>
+    const dropdowns = document.querySelectorAll('.dropdown');
+    let activeDropdown = null; // Keep track of the active dropdown
+
+    dropdowns.forEach(dropdown => {
+        const select = dropdown.querySelector('.select');
+        const caret = dropdown.querySelector('.caret');
+        const menu = dropdown.querySelector('.menu');
+        const options = dropdown.querySelectorAll('.menu li'); // Use querySelectorAll
+        const selected = dropdown.querySelector('.selected');
+
+        select.addEventListener('click', () => {
+            if (activeDropdown !== dropdown) {
+                // Close the previously active dropdown
+                if (activeDropdown) {
+                    activeDropdown.querySelector('.menu').classList.remove('menu-open');
+                    activeDropdown.querySelector('.caret').classList.remove('caret-rotate');
+                    activeDropdown.querySelector('.select').classList.remove('select-clicked');
+                }
+
+                // Set the current dropdown as active
+                activeDropdown = dropdown;
+            }
+
+            select.classList.toggle('select-clicked');
+            caret.classList.toggle('caret-rotate');
+            menu.classList.toggle('menu-open');
+        });
+
+        options.forEach(option => {
+            option.addEventListener('click', () => {
+                selected.classList.remove('select-clicked');
+                caret.classList.remove('caret-rotate');
+                menu.classList.remove('menu-open');
+                options.forEach(option => {
+                    option.classList.remove('active');
+                });
+                option.classList.add('active');
+            });
+        });
+    });
+</script>
 
 </html>
