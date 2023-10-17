@@ -1,10 +1,10 @@
 from django.shortcuts import render
 from django.core.paginator import Paginator 
-from book.models import Books
+from book.models import Book
 # Create your views here.
 
 def home(request):
-    books = Books.objects.all()
+    books = Book.objects.all()
     books = order_paginate(books,request)
     return render(request, 'book/books.html', {'books' : books})
 
