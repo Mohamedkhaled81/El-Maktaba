@@ -18,9 +18,11 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from book import views
 
 urlpatterns = [
     path('admin/', admin.site.urls, name='admin'),
+    path('book/<str:slug>', views.book_details, name='Book-Page'), 
     path('', include('main.urls')),
     path('books/', include('book.urls')),
     path('user/', include("user.urls")),

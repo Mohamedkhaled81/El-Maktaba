@@ -38,6 +38,7 @@ class Book(BaseClass):
             resize = (300,300)
             img.thumbnail(resize)
             img.save(self.image.path) 
+    
 
 class SubCategory(BaseClass):
     category = models.ForeignKey('Category',on_delete=models.CASCADE,related_name='subset')
