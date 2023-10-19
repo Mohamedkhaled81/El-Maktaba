@@ -21,6 +21,4 @@ def register(request):
 
 
 class Login(LoginView):
-    if 'search' in request.GET:
-       return home(request)
     template_name = "user/login.html"
