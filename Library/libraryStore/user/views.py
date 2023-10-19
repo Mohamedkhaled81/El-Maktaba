@@ -4,10 +4,13 @@ from django.contrib.auth.hashers import make_password
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse_lazy
+from main.views import home
 # Create your views here.
 
 
 def register(request):
+    if 'search' in request.GET:
+       return home(request)
     form = RegisterForm()
     if request.method == "POST":
         form = RegisterForm(data=request.POST)
@@ -18,4 +21,6 @@ def register(request):
 
 
 class Login(LoginView):
+    if 'search' in request.GET:
+       return home(request)
     template_name = "user/login.html"
