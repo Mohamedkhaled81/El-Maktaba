@@ -1,6 +1,6 @@
 # El-Maktaba [ Book E-commerce ]
 
-Welcome to El-Maktaba, a Book E-commerce project where you can explore and purchase a wide range of books. 
+Welcome to El-Maktaba, a Book E-commerce project where you can explore and purchase a wide range of CS books. 
 
 ## Disclaimer
 
