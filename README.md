@@ -49,7 +49,8 @@ El-Maktaba/
 ├── controllers/   # Business logic
 ├── routes/        # API routes
 ├── views/         # HTML templates (if used)
-├── public/        # Static files (CSS, JS)
+├── public/  
+└── config/        # Db Configurations
 ├── app.js         # Main app entry point
 └── package.json
 ```
@@ -64,7 +65,6 @@ El-Maktaba/
 * ✏️ Update book details
 * ❌ Delete books
 * 🧾 Input validation and error handling
-
 ---
 
 ## 🛠️ Installation & Setup
@@ -82,20 +82,6 @@ npm install
 # Run the app (development)
 npm run dev
 ```
-
----
-
-## 🌐 API Endpoints (Example)
-
-| Method | Endpoint   | Description     |
-| ------ | ---------- | --------------- |
-| GET    | /books     | Get all books   |
-| GET    | /books/:id | Get single book |
-| POST   | /books     | Create new book |
-| PUT    | /books/:id | Update book     |
-| DELETE | /books/:id | Delete book     |
-
----
 
 ## 🎯 Learning Goals
 

@@ -1,12 +1,17 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import morgan from 'morgan';
+import mongoose from 'mongoose';
+import { connectDb } from './config/dbConfig.js';
 
 // Retrieve All Environment Varaibles
 dotenv.config();
 
 // Inistantiate the Server..
 const app = express();
+
+// connect to Db
+connectDb();
 
 // Storing key-values for storage and for some App reqiured Settings..
 app.set('view engine', 'ejs');
@@ -27,11 +32,15 @@ app.use((req, res) => {
 });
 
 
-
 // Global Value
 const PORT = app.get('port');
 
-server.listen(PORT, () => {
-    const servStatus = `Server Started at PORT ${PORT} :D`
-    console.log(servStatus);
-});
+
+// Once The MongoDb is On We start the server..
+mongoose.connection.once('open', () => {
+    console.log('Connected to MongoDb :D');
+    app.listen(PORT, () => {
+        const servStatus = `Server Started at PORT ${PORT} :D`
+        console.log(servStatus);
+    });
+})
