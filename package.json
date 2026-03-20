@@ -1,0 +1,20 @@
+{
+  "name": "el-maktaba",
+  "version": "1.0.0",
+  "description": "> *“Passionate about the magic of words and the worlds they unlock.”*",
+  "homepage": "https://github.com/Mohamedkhaled81/El-Maktaba#readme",
+  "bugs": {
+    "url": "https://github.com/Mohamedkhaled81/El-Maktaba/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mohamedkhaled81/El-Maktaba.git"
+  },
+  "license": "ISC",
+  "author": "Mohamed Khaled",
+  "type": "commonjs",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
