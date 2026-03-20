@@ -50,7 +50,6 @@ El-Maktaba/
 ├── routes/        # API routes
 ├── views/         # HTML templates (if used)
 ├── public/        # Static files (CSS, JS)
-├── config/        # DB configuration
 ├── app.js         # Main app entry point
 └── package.json
 ```
