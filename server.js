@@ -3,6 +3,8 @@ import dotenv from 'dotenv';
 import morgan from 'morgan';
 import mongoose from 'mongoose';
 import { connectDb } from './config/dbConfig.js';
+import methodOverride from 'method-override';
+import bookModel from './models/book.model.js';
 
 // Retrieve All Environment Varaibles
 dotenv.config();
@@ -18,7 +20,11 @@ app.set('view engine', 'ejs');
 app.set('views', './views');
 app.set('port', process.env.PORT || 5050);
 
+// Global Value
+const PORT = app.get('port');
+
 // Use Global middle-wares <-> applying these middle-wares on all routes..
+app.use(methodOverride("_method"));
 app.use(morgan('dev')); //? This is important for logging requests.. 
 app.use(express.static('public')); //? This is important to serve static files < before checking any routes >..
 app.use(express.urlencoded({extended: true})); //? This is important for parsing the [ form Posted data ]..
@@ -26,15 +32,11 @@ app.use(express.json()); //? This is important for posting a [ json data ]..
 
 // Routers
 
+
 // Fall-out route
 app.use((req, res) => {
     res.status(404).send(`<h1>Not-Found</h1>`)
 });
-
-
-// Global Value
-const PORT = app.get('port');
-
 
 // Once The MongoDb is On We start the server..
 mongoose.connection.once('open', () => {
@@ -43,4 +45,4 @@ mongoose.connection.once('open', () => {
         const servStatus = `Server Started at PORT ${PORT} :D`
         console.log(servStatus);
     });
-})
+});
