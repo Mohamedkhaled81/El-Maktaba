@@ -5,6 +5,7 @@ import mongoose from 'mongoose';
 import { connectDb } from './config/dbConfig.js';
 import methodOverride from 'method-override';
 import bookModel from './models/book.model.js';
+import rootRouter from './routes/index.js';
 
 // Retrieve All Environment Varaibles
 dotenv.config();
@@ -31,12 +32,7 @@ app.use(express.urlencoded({extended: true})); //? This is important for parsing
 app.use(express.json()); //? This is important for posting a [ json data ].. 
 
 // Routers
-
-
-// Fall-out route
-app.use((req, res) => {
-    res.status(404).send(`<h1>Not-Found</h1>`)
-});
+app.use('/', rootRouter);
 
 // Once The MongoDb is On We start the server..
 mongoose.connection.once('open', () => {

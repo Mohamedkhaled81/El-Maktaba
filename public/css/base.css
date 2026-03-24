@@ -1,6 +1,115 @@
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+
+body {
     font-family: 'Courier New', Courier, monospace;
     background-color: whitesmoke;
+    min-height: 100vh;
+    color: #444;
+    line-height: 1.3;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 1 auto;
+}
+
+nav {
+    height: 80px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.logo {
+    font-size: xx-large;
+    font-weight: bolder;
+    flex: 0 0 auto;
+}
+
+.bttns-group {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    justify-content: flex-end;
+    flex: 0 0 auto;
+}
+
+button {
+    font-family: "Courier New", Courier, monospace;
+    font-size: large;
+    font-weight: bold;
+    border:none;
+    color: #444;
+    background:none;
+    cursor: pointer;
+}
+
+button:hover {
+    border-bottom:solid #444 3px;
+}
+
+footer {
+    background: #444;
+    padding: 20px 40px;
+    margin-top: auto;
+    height: 100px;
+    color: whitesmoke;
+}
+
+.hero {
+    color: #444;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    text-align: center;
+    padding: 70px;
+}
+
+.hero-content {
+    padding-top: 50px;
+    max-width: 900px;
+}
+
+.hero h1 {
+    font-size: 42px;
+    margin-bottom: 15px;
+}
+
+.hero p {
+    font-size: 18px;
+    margin-bottom: 45px;
+}
+
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 35px;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.footer-links {
+    display: flex;
+    gap: 15px;
+}
+
+.footer-links a {
+    text-decoration: none;
+    color: whitesmoke;
+    font-size: 14px;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
 }
