@@ -1,9 +1,9 @@
 import { Router } from "express";
-import {renderAddBook, addBook} from '../controllers/book.controller.js';
+import {renderAddBook, addBook, renderAllBooks} from '../controllers/book.controller.js';
 
 const bookRouter = Router();
 
-bookRouter.get('/allBooks', (req, res) => {});
+bookRouter.get('/allBooks', renderAllBooks);
 bookRouter.get('/addBook', renderAddBook);
 bookRouter.get('/EditBook', (req, res) => {});
 

@@ -4,7 +4,6 @@ import morgan from 'morgan';
 import mongoose from 'mongoose';
 import { connectDb } from './config/dbConfig.js';
 import methodOverride from 'method-override';
-import bookModel from './models/book.model.js';
 import rootRouter from './routes/index.js';
 
 // Retrieve All Environment Varaibles
