@@ -31,6 +31,7 @@ nav {
     font-size: xx-large;
     font-weight: bolder;
     flex: 0 0 auto;
+    cursor:pointer;
 }
 
 .bttns-group {
@@ -112,4 +113,70 @@ footer {
 
 .footer-links a:hover {
     text-decoration: underline;
+}
+
+/* General form container */
+form {
+    width: 45%;
+    margin: 0 auto;
+    padding: 30px;
+}
+
+/* Section spacing */
+.section {
+    margin-bottom: 25px;
+}
+
+/* Labels */
+label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    font-size: larger;
+}
+
+/* Form title */
+legend {
+    margin-bottom: 20px;
+    font-weight: bolder;
+    font-size: x-large;
+    text-align: center;
+}
+
+/* Inputs */
+input, textarea {
+    width: 100%;
+    font-family: "Courier New", Courier, monospace;
+    font-size: large;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    padding: 8px;
+    transition: border 0.2s;
+}
+
+textarea {
+    resize: none;
+}
+
+/* Validation styles */
+input:valid:not(:placeholder-shown) {
+    border: 2px solid green;
+}
+
+input:invalid:not(:placeholder-shown) {
+    border: 2px solid red;
+}
+
+/* Number input: remove spinner */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+}
+
+fieldset {
+    border: none;
+}
+
+.add-button {
+    text-align: center;
 }

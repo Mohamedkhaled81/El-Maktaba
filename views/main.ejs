@@ -1,40 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home</title>
-    <link rel="stylesheet" href="/css/base.css">
-</head>
-<body>
-    <nav>
-        <div class="logo">El-Maktaba</div>
-        <div class="bttns-group">
-            <button>Login</button>
-            <button>Register</button>
-        </div>
-    </nav>
+    <link rel="stylesheet" href="/css/base.css" />
+  </head>
+  <body>
+    <%- include('./partials/header'); -%>
     <main>
-        <section class="hero">
-            <div class="hero-content">
-                <h1>Welcome to El-Maktaba</h1>
-                <p>"Store your books, organize your collection, and manage them all in one place."</p>
+      <section class="hero">
+        <div class="hero-content">
+          <h1>Welcome to El-Maktaba</h1>
+          <p>
+            "Store your books, organize your collection, and manage them all in
+            one place."
+          </p>
 
-                <div class="hero-buttons">
-                    <button>Show All</button>
-                    <button>Add Book</button>
-                </div>
-            </div>
-        </section>
-    </main>
-    <footer>
-    <div class="footer-content">
-        <p>© 2026 El-Maktaba. All rights reserved.</p>
-        <div class="footer-links">
-            <a href="#">About</a>
-            <a href="#">Contact</a>
+          <div class="hero-buttons">
+            <button>Show All</button>
+            <button onclick="window.location.href='/books/addBook'">Add Book</button>
+          </div>
         </div>
-    </div>
-</footer>
-</body>
+      </section>
+    </main>
+  </body>
+  <%- include('./partials/footer'); -%>
 </html>

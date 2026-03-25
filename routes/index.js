@@ -3,7 +3,7 @@ import bookRouter from "./book.router.js";
 
 const rootRouter = Router();
 
-rootRouter.get('/', (req, res) => {
+rootRouter.get('/home', (req, res) => {
     res.render('main');
 });
 
