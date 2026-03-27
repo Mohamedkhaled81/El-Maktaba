@@ -1,5 +1,6 @@
 import { Router } from "express";
 import bookRouter from "./book.router.js";
+import CustomError from "../utils/customError.js";
 
 const rootRouter = Router();
 
@@ -8,6 +9,9 @@ rootRouter.get('/home', (req, res) => {
 });
 
 rootRouter.use('/books', bookRouter);
-rootRouter.use((req, res) => {res.status(404).send(`<h1>Not-Found</h1>`)});
+rootRouter.use((req, res, next) => {
+    const err = new CustomError("Can't find a route on the server!", 404);
+    next(err);
+});
 
 export default rootRouter;

@@ -1,5 +1,5 @@
 import { Router } from "express";
-import {renderAddBook, addBook, renderAllBooks} from '../controllers/book.controller.js';
+import {renderAddBook, addBook, renderAllBooks, deleteBook} from '../controllers/book.controller.js';
 
 const bookRouter = Router();
 
@@ -9,6 +9,6 @@ bookRouter.get('/EditBook', (req, res) => {});
 
 bookRouter.post('/', addBook);
 bookRouter.put('/:id', (req, res) => {});
-bookRouter.delete('/:id', (req, res) => {});
+bookRouter.delete('/:id', deleteBook);
 
 export default bookRouter;

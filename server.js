@@ -5,6 +5,9 @@ import mongoose from 'mongoose';
 import { connectDb } from './config/dbConfig.js';
 import methodOverride from 'method-override';
 import rootRouter from './routes/index.js';
+import { fileURLToPath } from 'url';
+import globalErrorHandler from './middlewares/globalError.js'
+import path from 'path';
 
 // Retrieve All Environment Varaibles
 dotenv.config();
@@ -22,6 +25,8 @@ app.set('port', process.env.PORT || 5050);
 
 // Global Value
 const PORT = app.get('port');
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // Use Global middle-wares <-> applying these middle-wares on all routes..
 app.use(methodOverride("_method"));
@@ -32,6 +37,9 @@ app.use(express.json()); //? This is important for posting a [ json data ]..
 
 // Routers
 app.use('/', rootRouter);
+
+// Global Custom-ErrorHandler
+app.use(globalErrorHandler);
 
 // Once The MongoDb is On We start the server..
 mongoose.connection.once('open', () => {

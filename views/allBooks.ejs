@@ -4,8 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="/css/base.css">
 </head>
 <body>
-    ALL ALL ALL
+    <%- include('./partials/header') -%>
+    <main>
+        <div class="books-container">
+            <% for(const book of books ) { %>
+                <div class="book-card">
+                    <h2><%= book.title %></h2>
+                    <br>
+                    <p><strong>Authors:</strong> <%= book.authors.join(', ') %></p>
+                    <p><strong>Published:</strong> <%= book.publishedYear %></p>
+                    <p><strong>Categories:</strong> <%= book.categories.join(', ') %></p>
+                    <br>
+                    <p><%= book.description %></p>
+                    <div class="bttns-group bttns-cards">
+                        <form>
+                            <button type="submit">Edit</button>
+                        </form>
+                        <form method="post" action=<%=`/books/${book._id}?_method=DELETE`%>>
+                            <button type="submit" id="del-bttn">Delete</button>
+                        </form>
+                    </div>
+                </div>
+            <% } %>
+        </div>
+    </main>
+    <%- include('./partials/footer') -%>
 </body>
 </html>

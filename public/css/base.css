@@ -25,6 +25,7 @@ nav {
     justify-content: space-around;
     align-items: center;
     flex-wrap: wrap;
+    margin-bottom: 20px;
 }
 
 .logo {
@@ -119,7 +120,7 @@ footer {
 form {
     width: 45%;
     margin: 0 auto;
-    padding: 30px;
+    padding: 20px;
 }
 
 /* Section spacing */
@@ -187,4 +188,56 @@ fieldset {
 
 .add-button {
     text-align: center;
+}
+
+.error-section {
+    text-align: center;
+    padding-top: 100px;
+    text-align: center;
+}
+
+.error-section #status {
+    color: rgb(166, 23, 23);
+}
+
+.books-container {
+    width: 80%;
+    margin: 40px auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.book-card {
+    flex: 1 1 450px;
+    max-width: 500px;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    gap:5px;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    background-color: #fff;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.book-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
+.bttns-cards {
+    margin-top: auto; 
+    align-self: flex-end;
+    display: flex;
+}
+
+#del-bttn {
+    color: rgb(166, 23, 23);
+}
+
+#del-bttn:hover {
+    border-bottom:solid rgb(166, 23, 23) 3px;
 }
