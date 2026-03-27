@@ -1,4 +1,5 @@
 import BookModel from "../models/book.model.js";
+import commaToArray from "../utils/commaToArray.js";
 
 const renderAllBooks = async function (req, res) {
     const books = await BookModel.find();
@@ -26,8 +27,8 @@ const addBook = async function (req, res) {
         if(Number.isNaN(publishedYear)) {
             throw new Error('Bad request');
         }
-        authors = authors.split(',').map((authorName) => authorName.trim());
-        categories = categories.split(',').map((categoryName) => categoryName.trim());
+        authors = commaToArray(authors);
+        categories = commaToArray(categories);
     
         const book = new BookModel({title, publishedYear, authors, categories, description});
         await book.save();
@@ -42,10 +43,8 @@ const updateBook = async function (req, res) {
     const id = req.params.id;
     const payLoad = req.body;
 
-    payLoad.authors = payLoad.authors.split(',').map((author) => author.trim());
-    payLoad.categories = payLoad.categories.split(',').map((category) => category.trim());
-
-    console.log(payLoad);
+    payLoad.authors = commaToArray(payLoad.authors);
+    payLoad.categories = commaToArray(payLoad.categories);
 
     await BookModel.findByIdAndUpdate(id, payLoad);
     res.redirect('/books/allBooks');
