@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>All-Books</title>
     <link rel="stylesheet" href="/css/base.css">
 </head>
 <body>
@@ -20,7 +20,7 @@
                     <br>
                     <p><%= book.description %></p>
                     <div class="bttns-group bttns-cards">
-                        <form>
+                        <form method="get" action=<%=`/books/EditBook/${book._id}`%>>
                             <button type="submit">Edit</button>
                         </form>
                         <form method="post" action=<%=`/books/${book._id}?_method=DELETE`%>>

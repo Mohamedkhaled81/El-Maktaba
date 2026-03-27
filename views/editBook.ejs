@@ -3,9 +3,96 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=\, initial-scale=1.0">
-    <title>Document</title>
+    <title>Edit-Book</title>
+    <link rel="stylesheet" href="/css/base.css">
 </head>
 <body>
-    
+    <%- include('./partials/header') %>
+    <main>
+    <form action=<%=`http://127.0.0.1:5050/books/${book._id}?_method=PUT`%> method="post">
+      <fieldset>
+        <legend>Edit Existed Book</legend>
+
+        <!-- Title -->
+        <div class="section">
+          <label for="title">Title:</label>
+          <input
+            type="text"
+            name="title"
+            id="title"
+            placeholder="Book Title"
+            required
+            pattern=".{2,100}"
+            title="Enter a title between 2 and 100 characters"
+            value="<%= book.title %>"
+          />
+        </div>
+
+        <!-- Published Year -->
+        <div class="section">
+          <label for="publishedYear">Published Year:</label>
+          <input
+            type="number"
+            name="publishedYear"
+            id="publishedYear"
+            placeholder="YYYY"
+            required
+            min="1000"
+            max="2100"
+            title="Enter a valid year (1000–2100)"
+            value="<%= book.publishedYear %>"
+          />
+        </div>
+
+        <!-- Authors -->
+        <div class="section">
+          <label for="authors">Authors (comma-separated):</label>
+          <input
+            type="text"
+            name="authors"
+            id="authors"
+            placeholder="Author1, Author2"
+            required
+            pattern=".{2,200}"
+            title="Enter author names, separated by commas"
+            value="<%= book.authors.join(', ') %>"
+          />
+        </div>
+
+        <!-- Categories -->
+        <div class="section">
+          <label for="categories">Categories (comma-separated):</label>
+          <input
+            type="text"
+            name="categories"
+            id="categories"
+            placeholder="Fiction, History"
+            required
+            pattern=".{2,200}"
+            title="Enter categories, separated by commas"
+            value="<%= book.categories.join(', ') %>"
+          />
+        </div>
+
+        <!-- Description -->
+        <div class="section">
+        <label for="description">Description:</label>
+        <textarea
+            name="description"
+            id="description"
+            placeholder="Book Description"
+            required
+            rows="5"
+        ><%= book.description %></textarea>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="section form-button">
+          <button type="submit">Save & Edit Book</button>
+        </div>
+      </fieldset>
+    </form>
+    </main>
+    <%- include('./partials/footer') %>
 </body>
 </html>

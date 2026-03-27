@@ -8,6 +8,11 @@ const renderAddBook = function (req, res) {
     res.render('addBook');
 };
 
+const renderEditBook = async function (req, res) {
+    const id = req.params.id;
+    const book = await BookModel.findById(id);
+    res.render('editBook', {book});
+}
 
 //! Handle This Controller in more cleaner way
 const addBook = async function (req, res) {
@@ -35,11 +40,10 @@ const addBook = async function (req, res) {
 
 const updateBook = async function (req, res) {};
 const deleteBook = async function (req, res) {
-    console.log(1)
     const _id = req.params.id;
     await BookModel.deleteOne({_id});
     res.redirect('/books/allBooks');
 };
 
 
-export {renderAddBook, renderAllBooks, addBook, updateBook, deleteBook};
+export {renderEditBook, renderAddBook, renderAllBooks, addBook, updateBook, deleteBook};
