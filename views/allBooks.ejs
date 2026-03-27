@@ -18,7 +18,7 @@
                     <p><strong>Published:</strong> <%= book.publishedYear %></p>
                     <p><strong>Categories:</strong> <%= book.categories.join(', ') %></p>
                     <br>
-                    <p><%= book.description %></p>
+                    <textarea rows="5" readonly><%= book.description %></textarea>
                     <div class="bttns-group bttns-cards">
                         <form method="get" action=<%=`/books/EditBook/${book._id}`%>>
                             <button type="submit">Edit</button>

@@ -38,7 +38,18 @@ const addBook = async function (req, res) {
     res.redirect('/books/allBooks');
 };
 
-const updateBook = async function (req, res) {};
+const updateBook = async function (req, res) {
+    const id = req.params.id;
+    const payLoad = req.body;
+
+    payLoad.authors = payLoad.authors.split(',').map((author) => author.trim());
+    payLoad.categories = payLoad.categories.split(',').map((category) => category.trim());
+
+    console.log(payLoad);
+
+    await BookModel.findByIdAndUpdate(id, payLoad);
+    res.redirect('/books/allBooks');
+};
 const deleteBook = async function (req, res) {
     const _id = req.params.id;
     await BookModel.deleteOne({_id});
