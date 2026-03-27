@@ -8,6 +8,7 @@ import rootRouter from './routes/index.js';
 import { fileURLToPath } from 'url';
 import globalErrorHandler from './middlewares/globalError.js'
 import path from 'path';
+import serveFavicon from 'serve-favicon';
 
 // Retrieve All Environment Varaibles
 dotenv.config();
@@ -29,6 +30,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // Use Global middle-wares <-> applying these middle-wares on all routes..
+app.use(serveFavicon(path.join(__dirname, '/public/images/favicon.ico')));
 app.use(methodOverride("_method"));
 app.use(morgan('dev')); //? This is important for logging requests.. 
 app.use(express.static('public')); //? This is important to serve static files < before checking any routes >..
